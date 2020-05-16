@@ -13,7 +13,7 @@
  * Returns the functions composition of two specified functions f(x) and g(x).
  * The result of compose is to be a function of one argument, (lets call the argument x),
  * which works like applying function f to the result of applying function g to x, i.e.
- *  getComposition(f,g)(x) = f(g(x))
+ * getComposition(f,g)(x) = f(g(x))
  *
  * @param {Function} f
  * @param {Function} g
@@ -24,6 +24,8 @@
  *
  */
 function getComposition(/* f, g */) {
+  // return (x) => f(g(x));
+
   throw new Error('Not implemented');
 }
 
@@ -44,8 +46,9 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (a) => a ** exponent;
+  // throw new Error('Not implemented');
 }
 
 
@@ -63,6 +66,7 @@ function getPowerFunction(/* exponent */) {
  *   getPolynom()      => null
  */
 function getPolynom() {
+  // return (...arguments) =>
   throw new Error('Not implemented');
 }
 
@@ -81,8 +85,10 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const output = func();
+  return () => output;
+  // throw new Error('Not implemented');
 }
 
 
@@ -169,8 +175,13 @@ function partialUsingArguments(/* fn, ...args1 */) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(/* startFrom */) {
-  throw new Error('Not implemented');
+function getIdGeneratorFunction(startFrom) {
+  let output = startFrom - 1;
+  return () => {
+    output += 1;
+    return output;
+  };
+  // throw new Error('Not implemented');
 }
 
 
